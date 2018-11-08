@@ -34,13 +34,14 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
 
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private ListPreference mStatusBarBattery;
+    private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
- 
+
          addPreferencesFromResource(R.xml.battery);
- 
+
          ContentResolver resolver = getActivity().getContentResolver();
 
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
@@ -48,6 +49,7 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
                 Settings.Secure.STATUS_BAR_BATTERY_STYLE, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
+        enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBattery.setOnPreferenceChangeListener(this);
 }
 
@@ -65,8 +67,17 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements
             Settings.Secure.putInt(resolver,
                     Settings.Secure.STATUS_BAR_BATTERY_STYLE, batteryStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
+            enableStatusBarBatteryDependents(batteryStyle);
             return true;
         }
         return false;
+    }
+
+    private void enableStatusBarBatteryDependents(int batteryIconStyle) {
+        if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT) {
+            mStatusBarBatteryShowPercent.setEnabled(false);
+        } else {
+            mStatusBarBatteryShowPercent.setEnabled(true);
+        }
     }
 }
