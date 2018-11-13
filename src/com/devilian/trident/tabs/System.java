@@ -27,6 +27,10 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.android.settingslib.core.AbstractPreferenceController;
+import com.devilian.trident.fragments.ContentPaddingPreferenceController;
+import com.devilian.trident.fragments.RoundedCornersPreferenceController;
+
 
 import com.android.settings.R;
 
@@ -62,6 +66,14 @@ public class System extends SettingsPreferenceFragment implements Preference.OnP
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.TRIDENT;
+    }
+   
+    private static List<AbstractPreferenceController> buildPreferenceControllers(
+            Context context) {
+        final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new ContentPaddingPreferenceController(context));
+        controllers.add(new RoundedCornersPreferenceController(context));
+        return controllers;
     }
 }
 
