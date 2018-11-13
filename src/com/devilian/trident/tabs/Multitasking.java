@@ -35,6 +35,9 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.nano.MetricsProto;
 
 public class Multitasking extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
+    
+    private static final String KEY_DEVICE_PART = "xiaomi_part";
+    private static final String KEY_DEVICE_PART_PACKAGE_NAME = "com.lineageos.settings.device";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,6 @@ public class Multitasking extends SettingsPreferenceFragment implements Preferen
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.TRIDENT;
-    }
-}
+    } 
+} 
 
