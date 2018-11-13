@@ -11,7 +11,7 @@
  * KIND, either express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package com.devilian.settings.fragments;
+package com.devilian.trident.fragments;
 
 import android.content.Context;
 import android.content.ContentResolver;
