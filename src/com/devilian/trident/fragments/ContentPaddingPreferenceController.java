@@ -22,7 +22,7 @@ import android.support.v7.preference.PreferenceScreen;
 import android.provider.Settings;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settings.core.PreferenceControllerMixin;
-import com.devilian.settings.preferences.SystemSettingSeekBarPreference;
+import com.devilian.trident.preferences.SystemSettingSeekBarPreference;
 import libcore.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
